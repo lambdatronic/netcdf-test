@@ -1,7 +1,8 @@
 (task-options!
  pom  {:project     'netcdf-test
        :version     "1.0.0"
-       :description "Experimenting with the Java NetCDF library"}
+       :description "Experimenting with the Java NetCDF library"
+       :url         "http://www.unidata.ucar.edu/software/thredds/current/netcdf-java/tutorial/"}
  repl {:eval        '(set! *warn-on-reflection* true)
        :init-ns     'netcdf-test.core}
  aot  {:namespace   '#{netcdf-test.core}}
