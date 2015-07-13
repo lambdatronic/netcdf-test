@@ -61,8 +61,14 @@
    (for [varname ["year" "month" "day" "hour" "minute"]]
      (:data (read-ncfile filename varname (str timestep))))))
 
-;; (def ffwig-0 (extract-layer-by-timestep "/storage/WRF/varbytime/ffwig.nc" "ffwig" 0)) ;; first hour in WRF dataset
-;; (def ffwig-100-100 (extract-all-timesteps-by-location "/storage/WRF/varbytime/ffwig.nc" "ffwig" 100 100)) ;; all hours at point 100,100
-;; (take (int (* (count ffwi-point-vals-data) 0.025)) (sort > ffwi-point-vals-data)) ;; top 2.5% of hourly readings
-;; (time (def ffwi-point-vals-102 (read-ncfile "/storage/WRF/varbytime/ffwig.nc" "ffwig" "0:87672,102,102")))
-;; (get-timestamp "/storage/WRF/varbytime/ffwig.nc" 0) ;; timestamp of raster band 0
+;; timestamp of raster band 0
+;; (get-timestamp "/storage/WRF/varbytime/ffwig.nc" 0)
+
+;; first hour in WRF dataset
+;; (do (def ffwig-0 (extract-layer-by-timestep "/storage/WRF/varbytime/ffwig.nc" "ffwig" 0)) nil)
+
+;; all hours at point 100,100
+;; (do (def ffwig-100-100 (extract-all-timesteps-by-location "/storage/WRF/varbytime/ffwig.nc" "ffwig" 100 100)) nil)
+
+;; top 2.5% of hourly readings at point 100,100
+;; (take (int (* (count (:data ffwig-100-100)) 0.025)) (sort > (:data ffwig-100-100)))
